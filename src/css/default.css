@@ -31,9 +31,19 @@ body{
     font-size: 15px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+    background: #C62F2F;
+    height: 60px;
     align-items: center;
     justify-content: center;
-    background: #C62F2F;
+}
+.newSong.active{
+    display: flex;
+    padding: 10px;
+    color: #C62F2F;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background: #E6E7EA;
     height: 60px;
     align-items: center;
     justify-content: center;
@@ -42,6 +52,7 @@ body{
     flex-grow: 1;
     text-align: left;
     color: #959595;
+    height: 400px;
 }
 .songList > li{
     padding: 10px;

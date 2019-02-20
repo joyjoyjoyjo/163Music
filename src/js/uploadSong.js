@@ -39,14 +39,15 @@
                         // 每个文件上传前,处理相关的事情
                     },
                     'UploadProgress': function (up, file) {
-                        uploaderStatus.textContent = 'loading……'
                     },
                     'FileUploaded': function (up, file, info) {
-
                         var domain = up.getOption('domain');
                         var res = JSON.parse(info.response);
                         var sourceLink = 'http://' + domain + '/' + encodeURIComponent(res.key);
-                        uploaderStatus.textContent = sourceLink + ' ' + res.key
+                        window.eventHub.emit('upload',{
+                            url:sourceLink,
+                            name:res.key
+                        })
                     },
                     'Error': function (up, err, errTip) {
                         //上传出错时,处理相关的事情
