@@ -6,7 +6,6 @@
             this.$el = $(this.el)
         },
         template: `
-        <h1>NEW FILE</h1>
         <div class="line"></div>
         <form class="form">
             <div class="row">
@@ -14,7 +13,7 @@
                 <input name="name" type="text" value="__name__"></div>
             <div class="row">
                 <label>Singer :</label>
-                <input name="singer"type="text"></div>
+                <input name="singer" type="text" value="__singer__"></div>
             <div class="row">
                 <label>Link :</label>
                 <input name="url" type="text" value="__url__"></div>
@@ -30,6 +29,9 @@
                 html = html.replace(`__${string}__`, data[string] || '')
             })
             $(this.el).html(html)
+            if(data.id){
+                $(this.el).prepend(`<h1>EDIT FILE</h1>`)
+            }else{$(this.el).prepend(`<h1>NEW FILE</h1>`)}
         },
         reset(){
             this.render({})
@@ -65,6 +67,16 @@
             this.bindEvents()
             window.eventHub.on('upload', (data) => {
                 this.model.data = data
+                this.view.render(this.model.data)
+            })
+            window.eventHub.on('select',(data)=>{
+                this.model.data = data
+                this.view.render(this.model.data)
+            })
+            window.eventHub.on('new',()=>{
+                this.model.data ={
+                    name:'',url:'',id:'',singer:''
+                }
                 this.view.render(this.model.data)
             })
         },

@@ -35,6 +35,7 @@
                 this.data.songs = songs.map((songs)=>{
                     return {id:songs.id,...songs.attributes}
                 })
+                console.log(songs)
                 return songs
             })
         }
@@ -56,7 +57,18 @@
             $(this.view.el).on(`click`,`li`,(e)=>{
                 this.view.activeItem(e.currentTarget)
                 let songId = e.currentTarget.getAttribute('data-id')
-                window.eventHub.emit('select',{id:songId})
+                let data 
+                let songs = this.model.data.songs
+                for(let i =0;i<songs.length;i++){
+                    if(songs[i].id === songId){
+                        data = songs[i]
+                        break
+                    }
+                } 
+                //   console.log(JSON.parse(JSON.stringify(data)))
+                window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
+
+
             })
         },
         bindEventHub(){
@@ -66,6 +78,9 @@
             window.eventHub.on('create',(songData)=>{
                 this.model.data.songs.push(songData)
                 this.view.render(this.model.data)
+            })
+            window.eventHub.on('new',()=>{
+                this.view.clearActive()
             })
         }
     }
