@@ -65,16 +65,12 @@
                         break
                     }
                 } 
-                //   console.log(JSON.parse(JSON.stringify(data)))
-                window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
 
+                window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
 
             })
         },
         bindEventHub(){
-            window.eventHub.on('upload',(data)=>{
-                this.view.clearActive()
-            })
             window.eventHub.on('create',(songData)=>{
                 this.model.data.songs.push(songData)
                 this.view.render(this.model.data)
