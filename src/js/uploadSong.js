@@ -36,11 +36,12 @@
                         });
                     },
                     'BeforeUpload': function (up, file) {
-                        // 每个文件上传前,处理相关的事情
+                        window.eventHub.emit('BeforeUploading')
                     },
                     'UploadProgress': function (up, file) {
                     },
                     'FileUploaded': function (up, file, info) {
+                        window.eventHub.emit('AfterUpload')
                         var domain = up.getOption('domain');
                         var res = JSON.parse(info.response);
                         var sourceLink = 'http://' + domain + '/' + encodeURIComponent(res.key);
