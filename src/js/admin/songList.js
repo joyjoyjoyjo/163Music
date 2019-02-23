@@ -36,7 +36,6 @@
                 this.data.songs = songs.map((songs)=>{
                     return {id:songs.id,...songs.attributes}
                 })
-                console.log(songs)
                 return songs
             })
         }
@@ -60,7 +59,6 @@
                 
                 this.model.data.selectSongId = songId
                 this.view.render(this.model.data)
-
                 let data 
                 let songs = this.model.data.songs
                 for(let i =0;i<songs.length;i++){
