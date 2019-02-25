@@ -3,23 +3,12 @@
 
 @keyframes circle{0% {transform: rotate(0deg); } 100% {transform: rotate(360deg); } }
 
-.page{display: flex; flex-direction: column; height: 100vh;
+.page{
+	display: flex; flex-direction: column; height: 100vh;
 	background-size: cover;
 	position: relative;
 }
-.pageafter{
-	height: 100vh;
-	content: '';
-	background: transparent;
-	position: absolute;
-	top:0;
-	left:0;
-	width: 100%;
-	height: 100%;
-	filter: blur(5px);
-	z-index: -1;
 
-}
 .disc-container{position: relative; }
 .disc-container .icon-wrapper{position: absolute; z-index: 1; display: flex; 
 	justify-content: center; align-items: center;
