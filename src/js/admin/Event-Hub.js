@@ -2,7 +2,7 @@ window.eventHub = {
     events:{
         
     },
-    emit(eventName,data){//发布
+    emit(eventName,data){//发布事件
         for(let key in this.events){
             if(key === eventName){
                 let fnList = this.events[key]
@@ -12,7 +12,7 @@ window.eventHub = {
             }
         }
     },
-    on(eventName,fn){//订阅
+    on(eventName,fn){//订阅事件
         if(this.events[eventName] === undefined){
             this.events[eventName] = []
         }
